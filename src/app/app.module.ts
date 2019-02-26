@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ReportComponent } from './report/report.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { Ng2OrderModule } from 'ng2-order-pipe';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
     FormsModule,
     NgxPaginationModule,
     HttpClientModule,
-    Ng2OrderModule
+    Ng2OrderModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

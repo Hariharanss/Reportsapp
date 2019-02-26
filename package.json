@@ -29,6 +29,7 @@
     "mysql": "^2.15.0",
     "ng2-order-pipe": "^0.1.5",
     "ngx-pagination": "^3.2.1",
+    "ngx-spinner": "^7.0.0",
     "nodemon": "^1.18.10",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
