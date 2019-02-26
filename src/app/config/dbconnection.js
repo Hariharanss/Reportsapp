@@ -4,8 +4,8 @@ var sql = require('mssql');
 var config = {
     user: 'sa',
     password: 'orbitz',
-    server: 'orbits-9', 
-    database: 'ProjectManagent' 
+    server: '210.18.177.213', 
+    database: 'ProjectMgtNew'
 };
 
 // const config = {
