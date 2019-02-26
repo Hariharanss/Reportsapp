@@ -5,7 +5,7 @@ var config = {
     user: 'sa',
     password: 'orbitz',
     server: '210.18.177.213', 
-    database: 'ProjectMgtNew'
+    database: 'ProjectMaster'
 };
 
 // const config = {

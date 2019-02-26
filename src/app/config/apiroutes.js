@@ -81,7 +81,7 @@ router.post('/searchbasedoninputs', function (req, res) {
 
     // var query = " select * from ProjectManagent.dbo.Dailysheet where (project_name = '"+prjectname+"' or project_name = '') and (Cre_by = '"+developername+"' or Cre_by = '') and (pro_module = '"+projectmodule+"' or pro_module = '') and date between convert(date,'"+fromdate+"',105) and convert(date,'"+todate+"',105) ";
 
-    // console.log(query);
+     console.log(query);
     
     request.query(query, function (err, rows) {
         if (err) {
@@ -107,7 +107,7 @@ router.post('/searchbasedoninputs', function (req, res) {
                         // console.log(rec.recordset)
                         var noofdays = rec.recordset[0].Noofworkingdays;
                         var obj = [rows.recordset,[{'Noofdays':noofdays}]]
-                        // console.log(obj);
+                         console.log(obj);
                         res.send(obj);
 
                     }
