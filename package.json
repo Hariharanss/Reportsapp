@@ -30,8 +30,7 @@
     "ngx-pagination": "^3.2.1",
     "ngx-spinner": "^7.0.0",
     "nodemon": "^1.18.10",
-    "preinstall": "npm install -g angular-cli",
-    "postinstall": "ng build && mv dist/* .",
+    "postinstall": "^0.4.2",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
