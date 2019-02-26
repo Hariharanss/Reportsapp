@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng build --prod --aot=flase && nodemon server.js",
-    "build": "ng build",
+    "build": "ng build --prod --aot=false",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
