@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng build --prod --aot=flase && nodemon server.js",
-    "build": "ng build --prod --aot=false",
+    "start": "ng build --prod  && nodemon server.js",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --prod --aot=false"
+    "postinstall": "ng build"
   },
   "private": true,
   "dependencies": {
