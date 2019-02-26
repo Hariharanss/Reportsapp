@@ -10,7 +10,7 @@ var request = new db.Request();
 
 // Get all Project name
 router.get('/GetProjectname', function (req, res) {
-    var query = "SELECT distinct project_name as ProjectName FROM ProjectManagent.dbo.Dailysheet;";
+    var query = "SELECT distinct project_name as ProjectName FROM ProjectMgtNew.dbo.Dailysheet;";
     // console.log(query);
     request.query(query, function (err, rows) {
         if (err) {
@@ -24,7 +24,7 @@ router.get('/GetProjectname', function (req, res) {
 
 // Get all Employer name
 router.get('/GetEmployername', function (req, res) {
-    var query = "SELECT distinct Cre_by as EmployeeName FROM ProjectManagent.dbo.Dailysheet;";
+    var query = "SELECT distinct Cre_by as EmployeeName FROM ProjectMgtNew.dbo.Dailysheet;";
     // console.log(query);
     request.query(query, function (err, rows) {
         if (err) {
@@ -38,7 +38,7 @@ router.get('/GetEmployername', function (req, res) {
 
 //Get all Reports record
 router.get('/showrecords', function (req, res) {
-    var query = "SELECT project_name as ProjectName, Pro_module as Module, Date as WorkingDate, Dailysheet_infor as Description, Cre_by as EmployeeName, [hours],[minu] FROM [ProjectManagent].[dbo].[Dailysheet] order by WorkingDate asc";
+    var query = "SELECT project_name as ProjectName, Pro_module as Module, Date as WorkingDate, Dailysheet_infor as Description, Cre_by as EmployeeName, [hours],[minu] FROM [ProjectMgtNew].[dbo].[Dailysheet] order by WorkingDate asc";
     // console.log(query);
     request.query(query, function (err, rows) {
         if (err) {
@@ -52,7 +52,7 @@ router.get('/showrecords', function (req, res) {
 
 //Get Today Reports record
 router.get('/Todayrecords', function (req, res) {
-    var query = "select project_name as ProjectName, Pro_module as Module, Date as WorkingDate, Dailysheet_infor as Description, Cre_by as EmployeeName, [hours],[minu] from Dailysheet where Date = cast(getdate() as Date) order by WorkingDate asc;";
+    var query = "select project_name as ProjectName, Pro_module as Module, Date as WorkingDate, Dailysheet_infor as Description, Cre_by as EmployeeName, [hours],[minu] from ProjectMgtNew.dbo.Dailysheet where Date = cast(getdate() as Date) order by WorkingDate asc;";
     //  console.log(query);
     request.query(query, function (err, rows) {
         if (err) {
