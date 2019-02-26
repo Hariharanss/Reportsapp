@@ -1,0 +1,83 @@
+@media screen and (min-device-width: 425px) and (max-device-width: 1440px) {
+.header1{
+width: 10%;
+}
+.header2{
+    width: 9%;
+}
+.header3{
+    width: 10%;
+}
+.header4{
+    width: 51%;
+}
+.header5{
+    width: 11%;
+}
+
+}
+
+.header1{
+    text-align: center;
+}
+
+.header2{
+    text-align: center;
+}
+
+.header3{
+    text-align: center;
+}
+
+.header4{
+    text-align: center;
+}
+
+.header5{
+    text-align: center;
+}
+
+.form{
+    background-color: #f1f1f6;
+    padding: 72px;
+    padding-top: 12px;
+    padding-bottom: 10px;
+}
+
+.formbuttons{
+    background-color: #f1f1f6;
+    padding-bottom: 14px;
+}
+@media screen and (min-device-width: 320px) and (max-device-width: 1023px) {
+.pagination-class{
+float: none !important;
+}
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 768px) {
+.form {
+    background-color: #4d50921f;
+    padding: unset !important;
+}
+}
+
+
+/* Overwrite Css */
+
+thead{
+    background-color: #4d5092cc!important;
+    color: white !important;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+hr {
+    margin-top: 17px;
+    margin-bottom: 17px;
+    border: 0;
+    border-top: 1px solid #e4e2e2;
+}
+
+/* End Overwrite Css */

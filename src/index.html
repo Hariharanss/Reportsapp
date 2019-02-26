@@ -1,14 +1,83 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Reportsapp</title>
-  <base href="/">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<head>
+    <meta charset="utf-8">
+    <title>Reportsapp</title>
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="./assets/css/datepicker.css">
+    <script src="./assets/js/bootstrap-datepicker.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+    <style>
+        .ngx-pagination {
+            padding: 0.1875rem 0.625rem;
+            color: white !important;
+            cursor: default !important;
+        }
+
+        .ngx-pagination li a {
+            color: white !important;
+            display: block;
+            padding: 0.1875rem 0.625rem;
+            border-radius: 0;
+        }
+
+        .ngx-pagination li a:hover {
+            background: #a97e7e !important;
+            color: black;
+        }
+    </style>
+
 </head>
+
 <body>
-  <app-root></app-root>
+
+    <app-root></app-root>
+
+    <script>
+        $(function () {
+            $('.datepicker').datepicker({
+                format: 'dd-mm-yyyy',
+                autoclose: true
+            });
+
+            //     $("#btnExport").click(function(){
+            //     alert('');
+            //     html2canvas($('#reporttable')[0], {
+            //         onrendered: function (canvas) {
+            //             var data = canvas.toDataURL();
+            //             var docDefinition = {
+            //                 content: [{
+            //                     image: data,
+            //                     width: 500
+            //                 }]
+            //             };
+            //             pdfMake.createPdf(docDefinition).download("Table.pdf");
+            //         }
+            //     });
+            // });
+
+        });
+    </script>
+
 </body>
+
 </html>

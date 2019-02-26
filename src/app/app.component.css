@@ -1,0 +1,25 @@
+
+
+@media screen and (min-device-width: 320px) and (max-device-width: 767px) {
+    .imglogo{
+        display: none;
+    }
+}
+
+/* Overwrite Css */
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+    color: #fff !important;
+    background-color: #2be8e6bf!important;
+}
+
+.navbar-inverse {
+    background-color: #4d5092 !important;
+    border-color: #080808 !important;
+}
+
+.navbar-inverse .navbar-nav>li>a{
+    color: white;
+}
+
+/* End Overwrite Css */

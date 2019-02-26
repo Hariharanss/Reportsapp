@@ -1,0 +1,172 @@
+<div class="container-fluid" style="padding: 33px;padding-top: 0px;">
+
+  <div class="row form">
+
+    <h3 class="text-primary text-center" style="margin-top: 0px;padding-bottom: 10px;border-bottom: 1px solid;">Reports Form</h3>
+
+    <br>
+
+    <form #reportsformdata="ngForm">
+
+      <div class="form-group col-md-3">
+        <label for="projectname">Project Name</label>
+        <input type="text" autocomplete="off" id="projectname" class="form-control inputreset"
+          placeholder="Project Name" list="projname" name="Projectname">
+        <datalist id="projname">
+          <option *ngFor="let data of projectnames">{{data.ProjectName}}</option>
+        </datalist>
+      </div>
+
+      <div class="form-group col-md-3">
+        <label for="module">Module</label>
+        <input type="text" class="form-control" id="module" name="Module" placeholder="Module">
+      </div>
+
+      <div class="form-group col-md-3">
+        <label for="From date"> From date</label>
+        <div class="input-append date">
+          <input class="form-control datepicker" name="Fromdate" id="fromdate" placeholder="From date" size="16"
+            type="text" />
+        </div>
+
+      </div>
+
+      <div class="form-group col-md-3">
+        <label for="todate"> To date</label>
+        <div class="input-append date">
+          <input class="form-control datepicker" id="todate" name="Todate" placeholder="To date" size="16"
+            type="text" />
+        </div>
+      </div>
+
+      <div class="form-group col-md-3">
+        <label for="employeename">Employee Name</label>
+        <input type="text" autocomplete="off" id="employeename" name="Employername" class="form-control inputreset"
+          placeholder="Employer Name" list="empname">
+        <datalist id="empname">
+          <option *ngFor="let data of employernames">{{data.EmployeeName}}</option>
+        </datalist>
+      </div>
+
+    </form>
+
+  </div>
+
+
+  <div class="row formbuttons">
+    <div class="col-md-offset-5 col-xs-3 col-sm-2 col-md-1 col-lg-1">
+      <button type="submit" class="btn btn-primary"
+        (click)="reportsform(reportsformdata,reportsformdata.form.valid)">Submit</button>
+    </div>
+
+    <div class="col-xs-3 col-sm-2 col-md-1 col-lg-3">
+      <button type="reset" class="btn btn-warning" (click)="clearreportsform()">Reset</button>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <form>
+
+    <div class="row" style="background-color: #f1f1f6;">
+
+      <h3 class="text-primary text-center" style="margin-top: 20px;padding-bottom: 11px;border-bottom: 1px solid;margin-left: 20px;margin-right: 20px;">Entries</h3>
+
+      <div class="form-group form-inline col-md-3">
+
+        <button type="button" class="btn btn-info" (click)="Gettodayrecords()">Today Entries</button>
+
+      </div>
+
+      <div *ngIf="reportslength" class="form-group form-inline col-xs-12 col-md-3" style="float: right;">
+        <label for="Pagelist" style="margin-right: 10px;">Filter Pages</label>
+        <select class="form-control" style="width: 70%;" name="pages" [(ngModel)]="selectpages"
+          (change)="pagesitemschange($event.target.value)" ngModel>
+          <option value="10">10</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+      </div>
+
+
+      <br>
+      <br>
+
+      <div style="overflow-x: scroll;width: 100%;" id="content" #content >
+<br>
+        <div *ngIf="!reportslength" class="text-center" style="padding: 14px;background: #4d5092;color: antiquewhite;
+        box-shadow: 0px 3px 2px #aab2bd;">
+          <span>No Records Found</span>
+        </div>
+
+        <div class="col-md-12" *ngIf="reportslength">
+
+          <table id="reporttable" class="table table-responsive table-bordered table-striped table-hover">
+            <thead>
+              <tr>
+                <th class="header1" scope="col" (click)="sort('ProjectName')">Project Name
+                  <span class="glyphicon sort-icon" *ngIf="key =='ProjectName'"
+                    [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th class="header2" scope="col" (click)="sort('Module')">Module
+                  <span class="glyphicon sort-icon" *ngIf="key =='Module'"
+                    [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th class="header3" scope="col" (click)="sort('WorkingDate')">Working Date
+                  <span class="glyphicon sort-icon" *ngIf="key =='WorkingDate'"
+                    [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th class="header4" scope="col">Description</th>
+                <th class="header5" scope="col">Employee Name</th>
+                <th class="header5" scope="col">Hours Taken</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let obj of reportsdata | orderBy: key : reverse | paginate: { id: 'listing_pagination',
+          itemsPerPage: getitemperpage,
+          currentPage: page,
+          totalItems: totalRec }">
+                <td>{{obj.ProjectName}}</td>
+                <td>{{obj.Module}}</td>
+                <td>{{obj.WorkingDate | date: 'dd-MM-yyyy'}}</td>
+                <td>{{obj.Description}}</td>
+                <td>{{obj.EmployeeName}}</td>
+                <td>{{obj.hours}}</td>
+              </tr>
+            </tbody>
+            <tfoot *ngIf = "showfooter">
+                <tr>
+                    <td></td>
+                    <td style="color: blue;">No of Days</td>
+                    <td style="color: red;">{{noofdaysworked}}</td>
+                    <td></td>
+                    <td style="color: blue;">Total Hours</td>
+                    <td style="color: red;">{{totalhours}}</td>
+                </tr>
+              </tfoot>
+          </table>
+        
+
+        </div>
+
+      </div>
+
+      <div class="col-md-12 divpagination" *ngIf="reportslength" style="background-color: #7173a8;">
+        <pagination-controls class="pagination-class" style="float: right;margin-top: 8px;" id="listing_pagination" maxSize="5"
+          directionLinks="true" (pageChange)="page = $event">
+        </pagination-controls>
+      </div>
+
+      <div *ngIf="reportslength" class="form-group form-inline col-md-offset-5 col-md-1">
+        <br>
+        <input type="button" class="btn btn-success" (click)="downloadpdf()" value="Export" />
+      </div>
+
+    </div>
+  </form>
+
+
+</div>
+
+<br><br>
