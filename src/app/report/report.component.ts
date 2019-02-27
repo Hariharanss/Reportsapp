@@ -21,6 +21,7 @@ export class ReportComponent implements OnInit {
   projectnames;
   employernames;
   totalhours = 0;
+  totaldays = 0;
   noofdaysworked = 0;
   showfooter = false;
 
@@ -101,7 +102,7 @@ export class ReportComponent implements OnInit {
     this.reportslength = false;
     this.showfooter = true;
     this.totalhours = 0;
-    this.noofdaysworked = 0;
+    this.totaldays = 0;
     this.totalRec = 0;
     this.page;
 
@@ -132,6 +133,10 @@ export class ReportComponent implements OnInit {
         this.reportsdata = temp[0];
         for (let i = 0; i < this.reportsdata.length; i++) {
           this.totalhours += this.reportsdata[i].hours;
+        }
+
+        for (let i = 0; i < this.reportsdata.length; i++) {
+          this.totaldays++;
         }
     
         this.totalRec = this.reportsdata.length;
