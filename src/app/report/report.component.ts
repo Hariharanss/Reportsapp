@@ -148,7 +148,7 @@ export class ReportComponent implements OnInit {
     this.totalhours = 0;
     this.totaldays = 0;
     this.totalRec = 0;
-    this.page;
+    this.page = 1;
 
     console.log(reportsformvalid);
 
@@ -253,6 +253,7 @@ export class ReportComponent implements OnInit {
     this.showfooter = false;
     this.totalhours = 0;
     this.noofdaysworked = 0;
+    this.page = 1;
     jQuery('#fromdate').val('');
     jQuery('#todate').val('');
     jQuery("#projectname").val("").trigger("change"); 
