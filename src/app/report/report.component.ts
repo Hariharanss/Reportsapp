@@ -39,6 +39,8 @@ export class ReportComponent implements OnInit {
     this.getallreports();
     this.getallprojectname();
     this.getallemployername();
+    jQuery("#projectname").val("").trigger("change"); 
+    jQuery("#employeename").val("").trigger("change"); 
   }
 
   getallreports() {
@@ -210,9 +212,9 @@ export class ReportComponent implements OnInit {
     this.noofdaysworked = 0;
     jQuery('#fromdate').val('');
     jQuery('#todate').val('');
-    jQuery('#projectname').val('');
+    jQuery("#projectname").val("").trigger("change"); 
     jQuery('#module').val('');
-    jQuery('#employeename').val('');
+    jQuery("#employeename").val("").trigger("change"); 
     this.getallreports();
   }
 

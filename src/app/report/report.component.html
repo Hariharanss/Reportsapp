@@ -10,6 +10,7 @@
         <label for="projectname">Project Name</label>
         <!-- <input type="text" autocomplete="off" placeholder="Project Name"  > -->
         <select id="projname" id="projectname" class="form-control">
+            <option value="">Please select</option>
           <option *ngFor="let data of projectnames">{{data.ProjectName}}</option>
         </select>
       </div>
@@ -37,22 +38,25 @@
       </div>
 
       <div class="form-group col-md-2">
-        <label for="employeename">Name</label>
-        <input type="text" autocomplete="off" id="employeename" name="Employername" class="form-control inputreset"
-          placeholder="Employer Name" list="empname">
-        <datalist id="empname">
+        <label for="empname">Name</label>
+        <!-- <input type="text" autocomplete="off" 
+          placeholder="Employer Name" list="empname"> -->
+        <select id="employeename" name="Employername" class="form-control inputreset">
+            <option value="">Please select</option>
           <option *ngFor="let data of employernames">{{data.EmployeeName}}</option>
-        </datalist>
+        </select>
       </div>
 
       <div *ngIf="reportslength" class="form-group col-xs-12 col-md-2">
         <label for="Pagelist" style="margin-right: 10px;">Filter Pages</label>
+
         <select class="form-control" name="pages" [(ngModel)]="selectpages"
           (change)="pagesitemschange($event.target.value)" ngModel>
           <option value="10">10</option>
           <option value="50">50</option>
           <option value="100">100</option>
         </select>
+        
       </div>
 
     </form>
