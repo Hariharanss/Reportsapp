@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
 
 import * as jsPDF from 'jspdf';
+import { Alert } from 'selenium-webdriver';
 
 declare var jQuery: any;
 
@@ -24,6 +25,8 @@ export class ReportComponent implements OnInit {
   totaldays = 0;
   noofdaysworked = 0;
   showfooter = false;
+  projvalue;
+  projectmodule;
 
   //Pagination
   selectpages = '10';
@@ -41,7 +44,7 @@ export class ReportComponent implements OnInit {
     this.getallemployername();
     jQuery("#projectname").val("").trigger("change"); 
     jQuery("#employeename").val("").trigger("change"); 
-  }
+  } 
 
   getallreports() {
     this.reportslength = false;
@@ -69,6 +72,45 @@ export class ReportComponent implements OnInit {
       }, error => {
       });
   }
+
+  changeprojectname(){
+    var projectname = jQuery('#projectname').val();
+    var obj = {'projectname':projectname}
+    this._reportsservice.Getprojectbasedmodule(obj)
+    .subscribe(success => {
+      this.projectmodule = success;
+      // console.log(success);
+    }, error => {
+    });
+  }
+
+  modulefilter(){
+    var temp;
+    var projectname = jQuery('#projectname').val();
+    temp = projectname;
+    if(temp == projectname){
+      jQuery("#projectname").val('');
+    }
+  }
+
+  modulefilter2(){
+    var temp;
+    var modulename = jQuery('#module').val();
+    temp = modulename;
+    if(temp == modulename){
+      jQuery("#module").val('');
+    }
+  }
+
+  modulefilter3(){
+    var temp;
+    var modulename = jQuery('#employeename').val();
+    temp = modulename;
+    if(temp == modulename){
+      jQuery("#employeename").val('');
+    }
+  }
+
 
   Gettodayrecords(){
     this.reportsdata = [];
@@ -197,7 +239,7 @@ export class ReportComponent implements OnInit {
       'elementHandlers': specialelementhandlers
     });
 
-    doc.save('test.pdf');
+    doc.save('Reports.pdf');
 
   }
 
@@ -207,6 +249,7 @@ export class ReportComponent implements OnInit {
   }
 
   clearreportsform() {
+    this.projectmodule = [];
     this.showfooter = false;
     this.totalhours = 0;
     this.noofdaysworked = 0;

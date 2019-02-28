@@ -7,17 +7,23 @@
     <form #reportsformdata="ngForm">
 
       <div class="form-group col-md-2">
-        <label for="projectname">Project Name</label>
-        <!-- <input type="text" autocomplete="off" placeholder="Project Name"  > -->
-        <select id="projname" id="projectname" class="form-control">
-            <option value="">Please select</option>
+        <label for="project">Project Name</label>
+        <input type="text" autocomplete="off" name="Projectname" class="form-control" id="projectname" placeholder="Project Name" list="projname" (ngModelChange)="changeprojectname()" (click)="modulefilter()" ngModel>
+        <datalist id="projname">
+          <option value="">Please select</option>
           <option *ngFor="let data of projectnames">{{data.ProjectName}}</option>
-        </select>
+        </datalist>
       </div>
 
       <div class="form-group col-md-2">
         <label for="module">Module</label>
-        <input type="text" class="form-control" id="module" name="Module" placeholder="Module">
+        <!-- <input type="text" class="form-control" id="module" name="Module" placeholder="Module"> -->
+        <input type="text" autocomplete="off" class="form-control" name="modulename" (click)="modulefilter2()" id="module" placeholder="Project Name" list="datamodule" ngModel>
+
+        <datalist id="datamodule">
+          <option value="">Please select</option>
+        <option *ngFor="let data of projectmodule">{{data.module}}</option>
+        </datalist>
       </div>
 
       <div class="form-group col-md-2">
@@ -39,12 +45,12 @@
 
       <div class="form-group col-md-2">
         <label for="empname">Name</label>
-        <!-- <input type="text" autocomplete="off" 
-          placeholder="Employer Name" list="empname"> -->
-        <select id="employeename" name="Employername" class="form-control inputreset">
+        <input type="text" autocomplete="off" 
+          placeholder="Employer Name" id="employeename" (click)="modulefilter3()" list="empname" class="form-control">
+        <datalist id="empname" name="Employername">
             <option value="">Please select</option>
           <option *ngFor="let data of employernames">{{data.EmployeeName}}</option>
-        </select>
+        </datalist>
       </div>
 
       <div *ngIf="reportslength" class="form-group col-xs-12 col-md-2">
@@ -78,7 +84,7 @@
         <input type="button" class="btn btn-success" (click)="downloadpdf()" value="Export" />
     </div>
 
-    <div class="form-group form-inline col-md-2">
+    <div class="form-group form-inline col-xs-offset-3 col-lg-offset-0 col-md-2">
       <button type="button" class="btn btn-info" (click)="Gettodayrecords()">Today Entries</button>
     </div>
 

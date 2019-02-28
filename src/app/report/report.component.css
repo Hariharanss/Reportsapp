@@ -1,18 +1,18 @@
 @media screen and (min-device-width: 425px) and (max-device-width: 1440px) {
 .header1{
-width: 10%;
+width: 11%;
 }
 .header2{
     width: 9%;
 }
 .header3{
-    width: 10%;
+    width: 11%;
 }
 .header4{
     width: 51%;
 }
 .header5{
-    width: 11%;
+    width: 10%;
 }
 
 }
@@ -22,8 +22,8 @@ width: 10%;
 }
 
 .table {
-    width: 87%;
-    margin-left: 6%;
+    width: 90%;
+    margin-left: 5%;
 }
 
 .header1{

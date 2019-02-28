@@ -13,6 +13,7 @@ export class ReportserviceService {
   public getallemployernamesurl:string = '/apiroutes/GetEmployername';
   public searchbasedonurl:string = '/apiroutes/searchbasedoninputs';
   public todayrecordsonurl:string = '/apiroutes/Todayrecords';
+  public projectmoduleurl:string = '/apiroutes/Getmodule';
 
   Getallreports(){
     return this.http.get(this.getallreportsurl);
@@ -32,6 +33,10 @@ export class ReportserviceService {
 
   searchbasedoninputs(data){
     return this.http.post(this.searchbasedonurl,data);
+  }
+
+  Getprojectbasedmodule(data){
+    return this.http.post(this.projectmoduleurl,data);
   }
 
 }

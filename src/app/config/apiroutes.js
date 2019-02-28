@@ -36,9 +36,25 @@ router.get('/GetEmployername', function (req, res) {
     });
 });
 
+// Get Module based on Project search
+router.post('/Getmodule', function (req, res) {
+    var projectname = req.body.projectname;
+    // console.log(req.body);
+    var query = "SELECT distinct Pro_module as module FROM ProjectMaster.dbo.Dailysheet where project_name = '"+projectname+"';";
+    //   console.log(query);
+    request.query(query, function (err, rows) {
+        if (err) {
+            res.status(400).json(err);
+        }
+        else {
+            res.send(rows.recordset);
+        }
+    });
+});
+
 //Get all Reports record
 router.get('/showrecords', function (req, res) {
-    var query = "SELECT top 10 project_name as ProjectName, Pro_module as Module, Date as WorkingDate, Dailysheet_infor as Description, Cre_by as EmployeeName, [hours],[minu] FROM [ProjectMaster].[dbo].[Dailysheet] order by WorkingDate desc";
+    var query = "SELECT top 100 project_name as ProjectName, Pro_module as Module, Date as WorkingDate, Dailysheet_infor as Description, Cre_by as EmployeeName, [hours],[minu] FROM [ProjectMaster].[dbo].[Dailysheet] order by WorkingDate desc";
     // console.log(query);
     request.query(query, function (err, rows) {
         if (err) {
@@ -67,8 +83,8 @@ router.get('/Todayrecords', function (req, res) {
 
 //Get Reports based on record
 router.post('/searchbasedoninputs', function (req, res) {
-    var projectname = (req.body.Projectname != '' ? req.body.Projectname : '');
-    var projectmodule = (req.body.Module != '' ? req.body.Module : '');
+    var projectname = (req.body.Projectname != '' && req.body.Projectname != undefined ? req.body.Projectname : '');
+    var projectmodule = (req.body.Module != ''  && req.body.Module != undefined ? req.body.Module : '');
     var developername = (req.body.Employername != '' ? req.body.Employername : '');
     var fromdate = (req.body.Fromdate != '' ? req.body.Fromdate : '');
     var todate = (req.body.Todate != '' ? req.body.Todate : '');
