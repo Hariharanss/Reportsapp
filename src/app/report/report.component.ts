@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ReportserviceService } from '../services/reportservice.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { NgForm } from '@angular/forms';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
 
@@ -15,7 +16,7 @@ declare var jQuery: any;
 })
 export class ReportComponent implements OnInit {
 
-  constructor(private _reportsservice: ReportserviceService) { }
+  constructor(private _reportsservice: ReportserviceService, private spinner: NgxSpinnerService) { }
 
   reportsdata;
   reportslength = false;
@@ -39,11 +40,13 @@ export class ReportComponent implements OnInit {
   reverse: boolean = false;
 
   ngOnInit() {
+    this.spinner.show();
     this.getallreports();
     this.getallprojectname();
     this.getallemployername();
     jQuery("#projectname").val("").trigger("change"); 
     jQuery("#employeename").val("").trigger("change"); 
+    this.spinner.hide();
   } 
 
   getallreports() {
