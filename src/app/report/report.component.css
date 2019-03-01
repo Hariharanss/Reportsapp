@@ -1,3 +1,12 @@
+@media screen and (min-device-width: 320px) and (max-device-width: 425px) {
+.mystylecontainer{
+    padding: 38px !important;
+}
+
+.formbuttons{
+padding-top: 11px;
+}
+}
 @media screen and (min-device-width: 425px) and (max-device-width: 1440px) {
 .header1{
 width: 11%;
