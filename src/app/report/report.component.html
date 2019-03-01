@@ -2,7 +2,7 @@
 
   <div class="row form">
 
-    <h3 class="text-primary text-center" style="margin-top: 0px;padding-bottom: 10px;border-bottom: 1px solid;">Reports Form</h3>
+    <h3 class="text-primary text-center" style="margin-top: 0px;padding-bottom: 10px;font-weight:700;border-bottom: 1px solid;">Reports Form</h3>
 
     <form #reportsformdata="ngForm">
 
@@ -103,7 +103,7 @@
           <span>No Records Found</span>
         </div>
 
-        <div class="col-md-12" *ngIf="reportslength">
+        <div class="col-md-12" *ngIf="reportslength" style="display: block;overflow:auto;height: 621px;width:100%;">
 
           <table id="reporttable" class="table table-responsive table-bordered table-striped table-hover">
             <thead>
