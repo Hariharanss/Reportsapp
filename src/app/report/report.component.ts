@@ -213,7 +213,8 @@ export class ReportComponent implements OnInit {
   @ViewChild('content') content: ElementRef;
 
   public downloadpdf() {
-
+    console.log(this.reportsdata);
+    if(this.reportsdata.length != 0){
     alert('Exporting as Pdf');
 
     // var pdf = new jsPDF('p','pt','a4');
@@ -249,7 +250,7 @@ export class ReportComponent implements OnInit {
     });
 
     doc.save('Reports.pdf');
-
+  }
   }
 
   sort(key) {

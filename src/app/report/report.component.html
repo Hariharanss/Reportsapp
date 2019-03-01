@@ -80,11 +80,11 @@
       <button type="reset" class="btn btn-warning" (click)="clearreportsform()">Clear</button>
     </div>
 
-    <div *ngIf="reportslength" class="form-group form-inline col-md-1">
+    <div class="form-group form-inline col-md-1">
       <button type="button" class="btn btn-info" (click)="Gettodayrecords()">Today</button>
     </div>
 
-    <div *ngIf="reportslength" class="form-group form-inline col-xs-offset-3 col-lg-offset-0 col-md-2">
+    <div class="form-group form-inline col-xs-offset-3 col-lg-offset-0 col-md-2">
       <input type="button" class="btn btn-success" (click)="downloadpdf()" value="Export" />
   </div>
 
@@ -141,11 +141,11 @@
             <tfoot *ngIf = "showfooter">
                 <tr>
                     <td></td>
-                    <td style="color: blue;">No of Days</td>
-                    <td style="color: red;">{{totalhours/8}}</td>
+                    <td style="color: blue;font-weight: 700;">No of Days</td>
+                    <td style="color: red;font-weight: 700;">{{totalhours/8}}</td>
                     <td></td>
-                    <td style="color: blue;">Total time</td>
-                    <td style="color: red;">{{totalhours}} hours <br> {{minutestaken}} mins</td>
+                    <td style="color: blue;font-weight: 700;">Total time</td>
+                    <td style="color: red;font-weight: 700;">{{totalhours}} hours <br> {{minutestaken}} mins</td>
                 </tr>
               </tfoot>
           </table>
