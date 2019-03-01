@@ -122,7 +122,7 @@
                 </th>
                 <th class="header4" scope="col">Description</th>
                 <th class="header5" scope="col">Employee Name</th>
-                <th class="header5" scope="col">Hours Taken</th>
+                <th class="header5" scope="col">Time Taken</th>
               </tr>
             </thead>
             <tbody>
@@ -135,17 +135,17 @@
                 <td>{{obj.WorkingDate | date: 'dd-MM-yyyy'}}</td>
                 <td>{{obj.Description}}</td>
                 <td>{{obj.EmployeeName}}</td>
-                <td>{{obj.hours}}</td>
+                <td>{{obj.hours}} : {{obj.minu}}</td>
               </tr>
             </tbody>
             <tfoot *ngIf = "showfooter">
                 <tr>
                     <td></td>
                     <td style="color: blue;">No of Days</td>
-                    <td style="color: red;">{{totaldays}}</td>
+                    <td style="color: red;">{{totalhours/8}}</td>
                     <td></td>
-                    <td style="color: blue;">Total Hours</td>
-                    <td style="color: red;">{{totalhours}}</td>
+                    <td style="color: blue;">Total time</td>
+                    <td style="color: red;">{{totalhours}} hours <br> {{minutestaken}} mins</td>
                 </tr>
               </tfoot>
           </table>

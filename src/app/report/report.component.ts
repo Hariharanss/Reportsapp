@@ -28,6 +28,7 @@ export class ReportComponent implements OnInit {
   showfooter = false;
   projvalue;
   projectmodule;
+  minutestaken = 0;
 
   //Pagination
   selectpages = '10';
@@ -149,6 +150,7 @@ export class ReportComponent implements OnInit {
     this.reportslength = false;
     this.showfooter = true;
     this.totalhours = 0;
+    this.minutestaken = 0;
     this.totaldays = 0;
     this.totalRec = 0;
     this.page = 1;
@@ -180,6 +182,10 @@ export class ReportComponent implements OnInit {
         this.reportsdata = temp[0];
         for (let i = 0; i < this.reportsdata.length; i++) {
           this.totalhours += this.reportsdata[i].hours;
+        }
+
+        for (let i = 0; i < this.reportsdata.length; i++) {
+          this.minutestaken += this.reportsdata[i].minu;
         }
 
         for (let i = 0; i < this.reportsdata.length; i++) {
