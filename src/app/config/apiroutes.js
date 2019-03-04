@@ -10,7 +10,7 @@ var request = new db.Request();
 
 // Get all Project name
 router.get('/GetProjectname', function (req, res) {
-    var query = "SELECT distinct project_name as ProjectName FROM ProjectMaster.dbo.Dailysheet;";
+    var query = "SELECT distinct project_name as ProjectName FROM ProjectMaster.dbo.Dailysheet order by ProjectName asc;";
     // console.log(query);
     request.query(query, function (err, rows) {
         if (err) {
@@ -24,7 +24,7 @@ router.get('/GetProjectname', function (req, res) {
 
 // Get all Employer name
 router.get('/GetEmployername', function (req, res) {
-    var query = "SELECT distinct Cre_by as EmployeeName FROM ProjectMaster.dbo.Dailysheet;";
+    var query = "SELECT distinct Cre_by as EmployeeName FROM ProjectMaster.dbo.Dailysheet order by EmployeeName asc;";
     // console.log(query);
     request.query(query, function (err, rows) {
         if (err) {
@@ -40,7 +40,7 @@ router.get('/GetEmployername', function (req, res) {
 router.post('/Getmodule', function (req, res) {
     var projectname = req.body.projectname;
     // console.log(req.body);
-    var query = "SELECT distinct Pro_module as module FROM ProjectMaster.dbo.Dailysheet where project_name = '"+projectname+"';";
+    var query = "SELECT distinct Pro_module as module FROM ProjectMaster.dbo.Dailysheet where project_name = '"+projectname+"' order by module asc ;";
     //   console.log(query);
     request.query(query, function (err, rows) {
         if (err) {
