@@ -226,7 +226,7 @@ export class ReportComponent implements OnInit {
     var mins = this.minutestaken;
     var checktype = this.type;
 
-    if(this.showfooter){
+    if(this.showfooter){ 
       window.open("http://210.18.177.213/Reports_a/Default.aspx?name="+name+"&projectname="+projectname+"&module="+projmodule+"&fromdate="+fromdate+"&todate="+todate+"&totalhours="+hours+"&totaldays="+days+"&totalmins="+mins+"&recordtype="+checktype+" ", "_self");
     }
     else{
