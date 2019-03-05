@@ -7,6 +7,10 @@
     }
 }
 
+.marg{
+    margin-left: 17px;
+}
+
 .exportclass{
     pointer-events: none;
     cursor: default;
