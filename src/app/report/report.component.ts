@@ -3,7 +3,7 @@ import { ReportserviceService } from '../services/reportservice.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NgForm } from '@angular/forms';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
-
+import { Router } from '@angular/router';
 import * as jsPDF from 'jspdf';
 import { Alert } from 'selenium-webdriver';
 
@@ -16,7 +16,7 @@ declare var jQuery: any;
 })
 export class ReportComponent implements OnInit {
 
-  constructor(private _reportsservice: ReportserviceService, private spinner: NgxSpinnerService) { }
+  constructor(private _reportsservice: ReportserviceService, private spinner: NgxSpinnerService,public route: Router) { }
 
   reportsdata;
   reportslength = false;
@@ -29,6 +29,7 @@ export class ReportComponent implements OnInit {
   projvalue;
   projectmodule;
   minutestaken = 0;
+  type;
 
   //Pagination
   selectpages = '10';
@@ -121,6 +122,7 @@ export class ReportComponent implements OnInit {
     this.showfooter = false;
     this.totalRec = 0;
     this.page;
+    this.type = 'today';
     this._reportsservice.Gettodayreports()
       .subscribe(success => {
         this.reportsdata = success;
@@ -154,6 +156,7 @@ export class ReportComponent implements OnInit {
     this.totaldays = 0;
     this.totalRec = 0;
     this.page = 1;
+    this.type = '';
 
     console.log(reportsformvalid);
 
@@ -175,11 +178,9 @@ export class ReportComponent implements OnInit {
 
     this._reportsservice.searchbasedoninputs(data)
       .subscribe(success => {
-        // console.log(success);
-        var temp = success;
-        this.noofdaysworked = temp[1];
-        this.noofdaysworked = this.noofdaysworked[0].Noofdays
-        this.reportsdata = temp[0];
+        // this.noofdaysworked = temp[1];
+        // this.noofdaysworked = this.noofdaysworked[0].Noofdays
+        this.reportsdata = success;
         for (let i = 0; i < this.reportsdata.length; i++) {
           this.totalhours += this.reportsdata[i].hours;
         }
@@ -194,7 +195,7 @@ export class ReportComponent implements OnInit {
     
         this.totalRec = this.reportsdata.length;
 
-        if(temp == 0 || temp <= 0 || temp == null || temp == undefined){
+        if(this.reportsdata == 0 || this.reportsdata <= 0 || this.reportsdata == null || this.reportsdata == undefined){
           this.reportslength = false;
         } else{
           this.reportslength = true;
@@ -211,6 +212,24 @@ export class ReportComponent implements OnInit {
   }
 
   @ViewChild('content') content: ElementRef;
+
+  public callreports(){
+
+    var name = jQuery('#employeename').val();
+    var projectname = jQuery('#projectname').val();
+    var projmodule = jQuery('#module').val();
+    var fromdate = jQuery('#fromdate').val();
+    var todate = jQuery('#todate').val();
+    var days = this.totalhours/8;
+    var hours = this.totalhours;
+    var mins = this.minutestaken;
+    var checktype = this.type;
+    console.log(checktype);
+
+    window.open("http://localhost:49509/Default.aspx?name="+name+"&projectname="+projectname+"&module="+projmodule+"&fromdate="+fromdate+"&todate="+todate+"&totalhours="+hours+"&totaldays="+days+"&totalmins="+mins+"&recordtype="+checktype+" ", "_self");
+
+    }
+
 
   public downloadpdf() {
     console.log(this.reportsdata);

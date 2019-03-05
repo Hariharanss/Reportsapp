@@ -54,7 +54,7 @@ router.post('/Getmodule', function (req, res) {
 
 //Get all Reports record
 router.get('/showrecords', function (req, res) {
-    var query = "SELECT top 100 project_name as ProjectName, Pro_module as Module, Date as WorkingDate, Dailysheet_infor as Description, Cre_by as EmployeeName, [hours],[minu] FROM [ProjectMaster].[dbo].[Dailysheet] order by WorkingDate desc";
+    var query = "SELECT top 100 project_name as ProjectName, Pro_module as Module, convert(varchar(12),Date,105) as WorkingDate, Dailysheet_infor as Description, Cre_by as EmployeeName, [hours],[minu] FROM [ProjectMaster].[dbo].[Dailysheet] order by WorkingDate desc";
     // console.log(query);
     request.query(query, function (err, rows) {
         if (err) {
@@ -68,7 +68,7 @@ router.get('/showrecords', function (req, res) {
 
 //Get Today Reports record
 router.get('/Todayrecords', function (req, res) {
-    var query = "select project_name as ProjectName, Pro_module as Module, Date as WorkingDate, Dailysheet_infor as Description, Cre_by as EmployeeName, [hours],[minu] from ProjectMaster.dbo.Dailysheet where Date = cast(getdate() as Date) order by WorkingDate asc;";
+    var query = "select project_name as ProjectName, Pro_module as Module, convert(varchar(12),Date,105) as WorkingDate, Dailysheet_infor as Description, Cre_by as EmployeeName, [hours],[minu] from ProjectMaster.dbo.Dailysheet where Date = cast(getdate() as Date) order by WorkingDate asc;";
     //  console.log(query);
     request.query(query, function (err, rows) {
         if (err) {
@@ -104,43 +104,45 @@ router.post('/searchbasedoninputs', function (req, res) {
     }
     else{
 
-    var query = " SearchDailysheet '"+projectname+"','"+projectmodule+"','"+developername+"','"+fromdate+"','"+todate+"' ";
+    var query = " SearchDailysheet '"+projectname+"','"+projectmodule+"','"+developername+"','"+fromdate+"','"+todate+"','','','' ";
 
     // var query = " select * from ProjectManagent.dbo.Dailysheet where (project_name = '"+prjectname+"' or project_name = '') and (Cre_by = '"+developername+"' or Cre_by = '') and (pro_module = '"+projectmodule+"' or pro_module = '') and date between convert(date,'"+fromdate+"',105) and convert(date,'"+todate+"',105) ";
 
     // console.log(query);
+    // console.log('asdsd');
     
     request.query(query, function (err, rows) {
         if (err) {
             res.status(400).json(err);
         }
         else {
-            if(rows.recordset.length != 0){
-                // console.log('fdsfds');
-                var recordlength = rows.recordset.length;
-                var fromdate = new Date(rows.recordset[0].WorkingDate).toISOString();
-                var todate = new Date(rows.recordset[recordlength-1].WorkingDate).toISOString();
+            res.send(rows.recordset);
+            // if(rows.recordset.length != 0){
+            //      console.log('fdsfds');
+            //     var recordlength = rows.recordset.length;
+            //     var fromdate = rows.recordset[0].WorkingDate
+            //     var todate = rows.recordset[recordlength-1].WorkingDate
                
-                // console.log(fromdate);
-                // console.log(todate);
+            //      console.log(fromdate);
+            //      console.log(todate);
 
-                var diffDaysquery = " SELECT * FROM dbo.fn_CountWeekDays('"+fromdate+"','"+todate+"'); ";
-                // console.log(diffDaysquery);
-                request.query(diffDaysquery, function (err, rec) {
-                    if (err) {
-                        res.status(400).json(err);
-                    }
-                    else {
-                        // console.log(rec.recordset)
-                        var noofdays = rec.recordset[0].Noofworkingdays;
-                        var obj = [rows.recordset,[{'Noofdays':noofdays}]]
-                        // console.log(obj);
-                        res.send(obj);
+            //     var diffDaysquery = " SELECT * FROM dbo.fn_CountWeekDays('"+fromdate+"','"+todate+"'); ";
+            //     // console.log(diffDaysquery);
+            //     request.query(diffDaysquery, function (err, rec) {
+            //         if (err) {
+            //             res.status(400).json(err);
+            //         }
+            //         else {
+            //             // console.log(rec.recordset)
+            //             var noofdays = rec.recordset[0].Noofworkingdays;
+            //             var obj = [rows.recordset,[{'Noofdays':noofdays}]]
+            //             // console.log(obj);
+            //             res.send(obj);
 
-                    }
-                });
+            //         }
+            //     });
                
-            }
+            // }
         }
     });
 }

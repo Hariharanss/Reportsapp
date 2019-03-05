@@ -7,6 +7,11 @@
     }
 }
 
+.exportclass{
+    pointer-events: none;
+    cursor: default;
+}
+
 @media screen and (min-device-width: 425px) and (max-device-width: 1440px) {
     .header1 {
         width: 11%;
