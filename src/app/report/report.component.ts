@@ -230,7 +230,7 @@ export class ReportComponent implements OnInit {
       window.open("http://localhost:49509/Default.aspx?name="+name+"&projectname="+projectname+"&module="+projmodule+"&fromdate="+fromdate+"&todate="+todate+"&totalhours="+hours+"&totaldays="+days+"&totalmins="+mins+"&recordtype="+checktype+" ", "_self");
     }
     else{
-      days = 0,hours = 0,mins = 0;
+      // days = 0,hours = 0,mins = 0;
       window.open("http://localhost:49509/Default.aspx?name="+name+"&projectname="+projectname+"&module="+projmodule+"&fromdate="+fromdate+"&todate="+todate+"&totalhours="+hours+"&totaldays="+days+"&totalmins="+mins+"&recordtype="+checktype+" ", "_self");
     }
 
