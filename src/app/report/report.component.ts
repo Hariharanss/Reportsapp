@@ -220,13 +220,19 @@ export class ReportComponent implements OnInit {
     var projmodule = jQuery('#module').val();
     var fromdate = jQuery('#fromdate').val();
     var todate = jQuery('#todate').val();
+
     var days = this.totalhours/8;
     var hours = this.totalhours;
     var mins = this.minutestaken;
     var checktype = this.type;
-    console.log(checktype);
 
-    window.open("http://localhost:49509/Default.aspx?name="+name+"&projectname="+projectname+"&module="+projmodule+"&fromdate="+fromdate+"&todate="+todate+"&totalhours="+hours+"&totaldays="+days+"&totalmins="+mins+"&recordtype="+checktype+" ", "_self");
+    if(this.showfooter){
+      window.open("http://localhost:49509/Default.aspx?name="+name+"&projectname="+projectname+"&module="+projmodule+"&fromdate="+fromdate+"&todate="+todate+"&totalhours="+hours+"&totaldays="+days+"&totalmins="+mins+"&recordtype="+checktype+" ", "_self");
+    }
+    else{
+      days = 0,hours = 0,mins = 0;
+      window.open("http://localhost:49509/Default.aspx?name="+name+"&projectname="+projectname+"&module="+projmodule+"&fromdate="+fromdate+"&todate="+todate+"&totalhours="+hours+"&totaldays="+days+"&totalmins="+mins+"&recordtype="+checktype+" ", "_self");
+    }
 
     }
 
