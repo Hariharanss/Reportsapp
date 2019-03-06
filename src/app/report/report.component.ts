@@ -193,12 +193,13 @@ export class ReportComponent implements OnInit {
           this.minutestaken += this.reportsdata[i].minu;
         }
 
-        this.totaldays = Math.round((this.totalhours / 8) + (this.minutestaken / 60));
-
         // for (let i = 0; i < this.reportsdata.length; i++) {
         //   this.totaldays++;
         // }
-        
+
+        let tempmin = this.minutestaken / 60;
+
+        this.totaldays = (this.totalhours + tempmin) / 8;
     
         this.totalRec = this.reportsdata.length;
 
