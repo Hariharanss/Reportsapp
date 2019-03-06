@@ -48,7 +48,11 @@ export class ReportComponent implements OnInit {
     this.getallemployername();
     jQuery("#projectname").val("").trigger("change"); 
     jQuery("#employeename").val("").trigger("change"); 
-    this.spinner.hide();
+    
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 2000);
+    
   } 
 
   getallreports() {
