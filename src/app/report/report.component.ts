@@ -229,7 +229,9 @@ export class ReportComponent implements OnInit {
     var fromdate = jQuery('#fromdate').val();
     var todate = jQuery('#todate').val();
 
-    var days = Math.round((this.totalhours / 8) + (this.minutestaken / 60));
+    let tempmin = this.minutestaken / 60;
+    var days = (this.totalhours + tempmin) / 8;
+    
     var hours = this.totalhours;
     var mins = this.minutestaken;
     var checktype = this.type;
