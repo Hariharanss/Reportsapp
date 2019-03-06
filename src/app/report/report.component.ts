@@ -193,9 +193,12 @@ export class ReportComponent implements OnInit {
           this.minutestaken += this.reportsdata[i].minu;
         }
 
-        for (let i = 0; i < this.reportsdata.length; i++) {
-          this.totaldays++;
-        }
+        this.totaldays = Math.round((this.totalhours / 8) + (this.minutestaken / 60));
+
+        // for (let i = 0; i < this.reportsdata.length; i++) {
+        //   this.totaldays++;
+        // }
+        
     
         this.totalRec = this.reportsdata.length;
 
@@ -225,7 +228,7 @@ export class ReportComponent implements OnInit {
     var fromdate = jQuery('#fromdate').val();
     var todate = jQuery('#todate').val();
 
-    var days = (this.totalhours / 8) + (this.minutestaken / 60);
+    var days = Math.round((this.totalhours / 8) + (this.minutestaken / 60));
     var hours = this.totalhours;
     var mins = this.minutestaken;
     var checktype = this.type;
