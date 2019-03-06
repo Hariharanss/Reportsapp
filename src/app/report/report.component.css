@@ -1,6 +1,7 @@
 @media screen and (min-device-width: 320px) and (max-device-width: 425px) {
     .mystylecontainer {
         padding: 38px !important;
+        padding-top: 0px !important;
     }
     .formbuttons {
         padding-top: 11px;
